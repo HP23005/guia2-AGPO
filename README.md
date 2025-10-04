@@ -3,6 +3,26 @@ Ejercicio 1: Procesos huérfanos y zombies
 Escribe un programa en C que cree un proceso hijo que termine inmediatamente mientras el padre hace sleep(30). Observa con ps aux y explica el estado del hijo (zombie). Luego mata al padre y verifica qué sucede con el hijo (huérfano). 
 NOTA: para la verificación en terminal es muy conveniente que se auxilie de grep para filtrar los resultados que contienen la palabra zombie recuerde el uso del comando “pipe” → | para unir salidas con entradas en la terminal.
 
+Analisis ejercicio 1
+Antes de matar al proceso padre
+Si el padre no hace wait(), el hijo finaliza y permanece en la tabla de procesos como zombie (Z o defunct) hasta que el padre lo recoja.
+Estado Z significa que el hijo terminó, pero su padre no ha recogido su estado de salida con wait().
+
+Despues de matar al proceso padre
+El proceso hijo zombie es adoptado por el proceso init o systemd (PID 1).
+El nuevo PPID (ID del padre) del hijo zombie será 1
+Luego el proceso init automáticamente realiza el wait() por él, y el zombie desaparece.
+
+La finalidad del código es demostrar cómo los procesos hijos pueden pasar por diferentes estados en un sistema operativo Unix/Linux, específicamente el estado zombie y el estado huérfano. Primero, el hijo se convierte en un zombie cuando termina su ejecución, pero el padre no llama a wait() para recolectar su estado. Mientras el padre está dormido, el hijo permanece como zombie. Cuando el padre se mata a sí mismo, el hijo se convierte en huérfano y es adoptado por el proceso init (PID 1), que se encarga de recolectar el estado del hijo y eliminarlo de la tabla de procesos. Este ciclo ilustra cómo el sistema maneja la terminación y limpieza de procesos, evitando que se acumulen procesos zombies.
+
+Codigo consola ejercicio 1
+CÓMO COMPILAR Y EJECUTAR
+gcc -o zombie_huerfano zombie_huerfano.c
+./zombie_huerfano
+
+CÓMO VER EL ESTADO DEL PROCESO HIJO (ZOMBIE)
+ps aux | grep Z
+
 
 Ejercicio 2: Creación masiva de procesos 
 Ejecuta un script que cree 50 procesos en background en la terminal: for i in {1..50}; do sleep 200 & done. Usa ps -o pid,ppid,stat,cmd --forest para observar la jerarquía. Explica con tus palabras cómo el kernel gestiona múltiples procesos concurrentes.
