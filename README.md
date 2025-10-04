@@ -17,7 +17,7 @@ La finalidad del código es demostrar cómo los procesos hijos pueden pasar por 
 
 Codigo consola ejercicio 1
 CÓMO COMPILAR Y EJECUTAR
-gcc -o ejercicio1-procesohijo.c
+gcc -o zombie_huerfano ejercicio1-procesohijo.c
 ./zombie_huerfano
 
 CÓMO VER EL ESTADO DEL PROCESO HIJO (ZOMBIE)
