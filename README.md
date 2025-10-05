@@ -136,3 +136,26 @@ int main() {
     pthread_join(hilo, NULL);X
     return 0;
 }
+
+#include <stdio.h>
+#include <unistd.h>
+#include <string.h>
+
+int main() {
+int fd[2];
+char mensaje[] = "Hola, padre";
+char buffer[20];
+
+pipe(fd);
+if (fork() == O) { // Hijo
+close(fd[0]);// Cierra el extrem de lectura
+write(fd[1], mensaje, strlen(mensaje) + 1);
+close(fd[1]);
+} else { // padre
+close(fd[1]); // Cierra el extrem de escritura
+read(fd[0], buffer, sizeof(buffer));
+printf("Mensaje recibido del hijo: %s\n", buffer);
+close(fd[0]);
+}
+return 0;
+}
