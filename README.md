@@ -120,3 +120,19 @@ int main() {
     printf("Este mensaje nunca se mostrara.\n");
     return 0;
 }
+
+
+#include <stdio.h>
+#include <pthread.h>
+
+void* imprimir(void* args) {
+    printf("Hilo en ejecucion con ID: %lu\n", pthread_self());
+    return NULL;
+}
+
+int main() {
+    pthread_t hilo;
+    pthread_create(&hilo, NULL, imprimir, NULL);
+    pthread_join(hilo, NULL);X
+    return 0;
+}
