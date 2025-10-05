@@ -54,6 +54,18 @@ En base a la realización del ejercicio responda con sus propias palabras:
 •	¿Qué utilidad tiene la función fork() en este caso?
 •	¿Cómo se puede aprovechar el uso de fork() en un software real?
 
+La función fork() en este caso se utiliza para crear un proceso hijo a partir del proceso padre. Permite la duplicación del proceso en dos procesos independientes que se ejecutan de forma concurrente. Esto es útil para crear tareas paralelas en un programa.
+
+En software real, fork() se puede usar para:
+
+Concurrencia: Crear múltiples procesos que pueden ejecutarse en paralelo, como en servidores web donde cada solicitud de cliente es manejada por un proceso hijo creado mediante fork().
+
+Procesamiento en segundo plano: Para realizar tareas en segundo plano sin bloquear el proceso principal. Por ejemplo, un programa que debe realizar un cálculo largo puede usar fork() para crear un proceso hijo que lo realice mientras el proceso principal sigue respondiendo a otras tareas.
+
+Sistemas multitarea: En sistemas que requieren de un alto nivel de multitarea, como en servidores de bases de datos, donde cada consulta o tarea puede ser manejada por un proceso hijo.
+
+Simulación de procesos independientes: fork() puede utilizarse para simular procesos separados que ejecutan tareas específicas de forma autónoma, lo que es común en sistemas distribuidos o en la creación de aplicaciones con arquitectura de microservicios.
+
 
 Ejercicio 5: Creación de hilos con pthread_create() 
 Escribe un programa en C que cree dos hilos utilizando la API de POSIX (pthreads). Cada hilo debe imprimir un mensaje identificativo (por ejemplo, "Hilo 1" y "Hilo 2"). El programa principal (hilo principal) debe esperar a que ambos hilos terminen su ejecución utilizando pthread_join(). Al final, el hilo principal debe imprimir un mensaje indicando que todos los hilos han terminado.
