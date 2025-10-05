@@ -66,6 +66,9 @@ Sistemas multitarea: En sistemas que requieren de un alto nivel de multitarea, c
 
 Simulación de procesos independientes: fork() puede utilizarse para simular procesos separados que ejecutan tareas específicas de forma autónoma, lo que es común en sistemas distribuidos o en la creación de aplicaciones con arquitectura de microservicios.
 
+cd /home/hp23005/guia2GPO
+gcc -o ejercicio4 ejercicio4.c
+./ejercicio4
 
 Ejercicio 5: Creación de hilos con pthread_create() 
 Escribe un programa en C que cree dos hilos utilizando la API de POSIX (pthreads). Cada hilo debe imprimir un mensaje identificativo (por ejemplo, "Hilo 1" y "Hilo 2"). El programa principal (hilo principal) debe esperar a que ambos hilos terminen su ejecución utilizando pthread_join(). Al final, el hilo principal debe imprimir un mensaje indicando que todos los hilos han terminado.
