@@ -16,12 +16,15 @@ Luego el proceso init automáticamente realiza el wait() por él, y el zombie de
 La finalidad del código es demostrar cómo los procesos hijos pueden pasar por diferentes estados en un sistema operativo Unix/Linux, específicamente el estado zombie y el estado huérfano. Primero, el hijo se convierte en un zombie cuando termina su ejecución, pero el padre no llama a wait() para recolectar su estado. Mientras el padre está dormido, el hijo permanece como zombie. Cuando el padre se mata a sí mismo, el hijo se convierte en huérfano y es adoptado por el proceso init (PID 1), que se encarga de recolectar el estado del hijo y eliminarlo de la tabla de procesos. Este ciclo ilustra cómo el sistema maneja la terminación y limpieza de procesos, evitando que se acumulen procesos zombies.
 
 Codigo consola ejercicio 1
-CÓMO COMPILAR Y EJECUTAR
-gcc -o zombie_huerfano ejercicio1-procesohijo.c
-./zombie_huerfano
+cd /home/hp23005/guia2GPO
+gcc -o huerfano_zombie ejercicio1-procesohijo.c
+./huerfano_zombie
+ps aux | grep huerfano_zombie
 
-CÓMO VER EL ESTADO DEL PROCESO HIJO (ZOMBIE)
-ps aux | grep Z
+cd /home/hp23005/guia2GPO
+gcc -o proceso_padre ejercicio1-matarprocesopadre.c
+./proceso_padre
+ps aux | grep proceso_padre
 
 
 Ejercicio 2: Creación masiva de procesos 
