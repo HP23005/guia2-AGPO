@@ -21,6 +21,8 @@ gcc -o huerfano_zombie ejercicio1-procesohijo.c
 ./huerfano_zombie
 ps aux | grep huerfano_zombie
 
+ps aux | grep pregunta1
+
 cd /home/hp23005/guia2GPO
 gcc -o proceso_padre ejercicio1-matarprocesopadre.c
 ./proceso_padre
@@ -92,3 +94,17 @@ Procesamiento concurrente: Los hilos pueden ejecutarse de forma concurrente, lo 
 Interactividad en aplicaciones: En aplicaciones de usuario, los hilos permiten que una interfaz gráfica de usuario (GUI) siga siendo interactiva mientras se realizan operaciones de fondo (como cargar datos o realizar cálculos largos), evitando que la interfaz se congele o bloquee.
 
 Mejor utilización de recursos: El uso de hilos puede hacer un mejor uso de los recursos del sistema, como los múltiples núcleos del procesador, haciendo que un programa se ejecute más rápidamente y sea más eficiente en su uso de CPU.
+
+
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    printf("1. Este es el programa original.\n");
+
+    execlp("ls", "ls", "-l", NULL);
+    
+    
+    printf("2. Me ejecutare?.\n");
+    return 0;
+}
