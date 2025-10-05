@@ -36,6 +36,17 @@ Ejercicio 3: Comunicación entre procesos
 Usa un pipe para conectar tres procesos: En la terminal ejecuta ps aux | grep bash | sort - k 2 -n | tee procesos.txt. Explica cómo se transmiten los datos entre procesos en el pipeline. Analiza la eficiencia frente a escribir/leer en disco. 
 NOTA: previo a la ejecución del comando muévete a un directorio adecuado puesto que se creará un archivo llamado procesos.txt en el directorio en el que la terminal se encuentre en ese momento. Puedes visualizar el archivo usando el comando cat.
 
+cd /home/hp23005/guia2GPO
+ps aux | grep bash | sort -k 2 -n | tee procesos.txt
+
+Transmisión de datos entre procesos en el pipeline
+En un pipeline de Linux, los procesos están conectados entre sí por medio de pipes, lo que significa que los datos fluyen de un proceso a otro sin necesidad de almacenarse en archivos intermedios. Aquí está cómo se transmite la información entre los procesos:
+Pipe (|): Los pipes son mecanismos en memoria que permiten que los datos se transmitan directamente de un proceso a otro. No es necesario escribir los datos a disco; se mantienen en memoria. El proceso ps aux escribe en el pipe, el cual es leído inmediatamente por grep, y luego por sort, y finalmente por tee.
+Los datos no se escriben en disco hasta que el comando tee guarda la salida en el archivo procesos.txt, lo que ocurre solo al final de la cadena de procesos.
+
+Eficiencia de los pipes frente a la escritura/lectura en disco
+Uso de pipes: Los pipes en memoria son mucho más rápidos que las operaciones de escritura y lectura en disco. Los datos no tienen que ser físicamente almacenados en el disco, sino que simplemente se transmiten a través de la memoria RAM. Este enfoque es altamente eficiente, especialmente cuando se está manejando un flujo continuo de datos entre procesos.
+Escritura/lectura en disco: Si los datos tuvieran que ser escritos en un archivo en disco en cada paso, habría una latencia significativa debido al acceso al sistema de archivos. La escritura en disco involucra varias operaciones I/O, lo que puede ser mucho más lento que el acceso directo a la memoria, especialmente si los archivos son grandes o si se realizan muchas operaciones de lectura y escritura.
 
 Ejercicio 4: Creación de procesos con fork() 
 Escribe un programa que cree un proceso hijo utilizando fork(). El proceso hijo debe imprimir su PID y el PPID (Parent Process ID). El proceso padre debe imprimir su propio PID y el PID del hijo. Además, el padre debe esperar a que el hijo termine usando wait().
