@@ -30,6 +30,7 @@ ps aux | grep proceso_padre
 Ejercicio 2: Creación masiva de procesos 
 Ejecuta un script que cree 50 procesos en background en la terminal: for i in {1..50}; do sleep 200 & done. Usa ps -o pid,ppid,stat,cmd --forest para observar la jerarquía. Explica con tus palabras cómo el kernel gestiona múltiples procesos concurrentes.
 
+En la imagen que compartiste, podemos ver cómo el kernel gestiona múltiples procesos concurrentes. Los 50 procesos sleep 200 están en ejecución, cada uno con su propio PID (identificador de proceso). El kernel, a través del planificador de procesos, distribuye el tiempo de CPU entre estos procesos y asegura que cada uno pueda ejecutarse sin interferir con los demás. Aunque los procesos están "durmiendo" (esperando), el kernel sigue manteniendo el control sobre ellos, gestionando sus estados y recursos. La jerarquía de procesos muestra que todos los procesos fueron creados por el proceso padre (bash) y gestionados como hijos, con cada uno teniendo su propio PID y un estado de "dormido" (sleep 200).
 
 Ejercicio 3: Comunicación entre procesos 
 Usa un pipe para conectar tres procesos: En la terminal ejecuta ps aux | grep bash | sort - k 2 -n | tee procesos.txt. Explica cómo se transmiten los datos entre procesos en el pipeline. Analiza la eficiencia frente a escribir/leer en disco. 
