@@ -108,3 +108,15 @@ int main() {
     printf("2. Me ejecutare?.\n");
     return 0;
 }
+
+
+
+#include <stdio.h>
+#include <unistd.h>
+
+int main() {
+    printf("Ejecutando el comando 'date' desde execlp...\n");
+    execlp("date", "date", NULL);
+    printf("Este mensaje nunca se mostrara.\n");
+    return 0;
+}
