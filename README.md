@@ -75,3 +75,20 @@ Escribe un programa en C que cree dos hilos utilizando la API de POSIX (pthreads
 En base a la realización del ejercicio responda con sus propias palabras: 
 •	¿Qué utilidad tienen los hilos en este caso? 
 •	¿Cómo se puede aprovechar el uso de hilos en un software real?
+
+
+cd /home/hp23005/guia2GPO
+gcc -o ejercicio5 ejercicio5.c
+./ejercicio5
+
+En este caso, los hilos permiten ejecutar múltiples tareas de manera concurrente dentro de un único programa. Al utilizar dos hilos, podemos realizar operaciones en paralelo, lo cual es más eficiente que si esas operaciones se realizaran secuencialmente en un solo hilo.
+
+Los hilos se utilizan ampliamente en el desarrollo de software real por las siguientes razones:
+
+Paralelismo: Los hilos permiten realizar varias tareas en paralelo, lo que mejora el rendimiento, especialmente en sistemas con múltiples núcleos de CPU. Por ejemplo, un servidor web puede manejar múltiples solicitudes de clientes simultáneamente, cada una en su propio hilo, mejorando la eficiencia y tiempos de respuesta.
+
+Procesamiento concurrente: Los hilos pueden ejecutarse de forma concurrente, lo que permite realizar tareas como la lectura y escritura de archivos, procesamiento de datos, o interacciones con la red, todo al mismo tiempo sin bloquearse mutuamente. Esto es útil en aplicaciones como servidores de bases de datos, aplicaciones de procesamiento de imágenes, y software de redes.
+
+Interactividad en aplicaciones: En aplicaciones de usuario, los hilos permiten que una interfaz gráfica de usuario (GUI) siga siendo interactiva mientras se realizan operaciones de fondo (como cargar datos o realizar cálculos largos), evitando que la interfaz se congele o bloquee.
+
+Mejor utilización de recursos: El uso de hilos puede hacer un mejor uso de los recursos del sistema, como los múltiples núcleos del procesador, haciendo que un programa se ejecute más rápidamente y sea más eficiente en su uso de CPU.
