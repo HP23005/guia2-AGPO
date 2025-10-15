@@ -1,10 +1,10 @@
 # guia3-AGPO
 Ejercicio 1: Creación y Activación de Memoria Swap
 Actividad: 
-	Crear un archivo de swap de 512MB con dd if=/dev/zero of=/swapfile bs=1M count=512. 
+Crear un archivo de swap de 512MB con dd if=/dev/zero of=/swapfile bs=1M count=512. 
 
 
-	Dar permisos y activar con mkswap, swapon. 
+Dar permisos y activar con mkswap, swapon. 
 
 
 Pregunta: ¿Qué efecto tiene el swap en sistemas con poca RAM?
@@ -12,21 +12,21 @@ Pregunta: ¿Qué efecto tiene el swap en sistemas con poca RAM?
 
 Ejercicio 2: Simulación de Fragmentación de Memoria 
 Actividad: 
-	Escribir un programa en C que reserve bloques de memoria de distintos tamaños y luego los libere de forma intercalada. Usar valgrind o pmap para analizar. 
+Escribir un programa en C que reserve bloques de memoria de distintos tamaños y luego los libere de forma intercalada. Usar valgrind o pmap para analizar. 
 
 
 Pregunta: ¿Cómo afecta la fragmentación al rendimiento?
 
 Ejercicio 3: Simulación de Algoritmos de Reemplazo de Páginas 
 Actividad: 
-	Programar en C un simulador que reciba una secuencia de referencias a memoria y aplique distintos algoritmos de reemplazo. 
+Programar en C un simulador que reciba una secuencia de referencias a memoria y aplique distintos algoritmos de reemplazo. 
 
 
 Pregunta: ¿Por qué LRU suele ser más eficiente que FIFO en la práctica?
 
 Ejercicio 4: Configuración de Límites de Memoria por Proceso 
 Actividad: 
-	Usar ulimit -v [kB] para limitar la memoria de un proceso y ejecutar un programa que intente exceder ese límite. 
+Usar ulimit -v [kB] para limitar la memoria de un proceso y ejecutar un programa que intente exceder ese límite. 
 
 
 Pregunta: ¿Qué ocurre cuando un proceso supera el límite de memoria asignado?
