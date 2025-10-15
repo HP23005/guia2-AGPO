@@ -189,6 +189,10 @@ int main() {
     return 0;
 }
 ```
+```bash
+gcc -g reemplazo.c -o reemplazo
+./reemplazo
+```
 
 Pregunta: ¿Por qué LRU suele ser más eficiente que FIFO en la práctica?
 ```bash
