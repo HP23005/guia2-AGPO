@@ -1,4 +1,4 @@
-# guia3-AGPO
+# guia3-GPO
 Ejercicio 1: Creación y Activación de Memoria Swap
 Actividad: 
 Crear un archivo de swap de 512MB con dd if=/dev/zero of=/swapfile bs=1M count=512. 
