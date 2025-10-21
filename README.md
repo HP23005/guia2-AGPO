@@ -73,6 +73,52 @@ En el proceso hijo, se usa execvp() para ejecutar el comando ls -l. Esta funció
 
 Mientras tanto, el proceso padre no finaliza inmediatamente; en cambio, espera la terminación del hijo usando wait(). Esta función bloquea la ejecución del padre hasta que el hijo termina, garantizando una correcta sincronización. Al terminar, el padre obtiene el estado de salida del hijo y muestra un mensaje final antes de finalizar su ejecución.
 ```
+Completo
+```bash
+#include <stdio.h> 
+#include <stdlib.h>  
+#include <unistd.h>  
+#include <sys/types.h> 
+#include <sys/wait.h>  
+
+int main() {
+    pid_t pid;
+
+    printf("Creando proceso hijo...\n");
+
+    pid = fork();
+
+    if (pid < 0) {
+        perror("\nError al crear el proceso hijo\n");
+        exit(EXIT_FAILURE);
+    } 
+    else if (pid == 0) {
+        printf("\nSoy el proceso hijo (PID=%d), y ejecutare 'ls -l'...\n", getpid());
+        
+        char *args[] = {"ls", "-l", NULL};
+
+        if (execvp(args[0], args) == -1) {
+            perror("\nError al ejecutar execvp\n");
+            exit(EXIT_FAILURE);
+        }
+    } 
+    else {
+        printf("\nSoy el proceso padre (PID=%d), estoy esperando a que mi hijo termine...\n", getpid());
+        
+        int status;
+        wait(&status);
+
+        if (WIFEXITED(status)) {
+            printf("\nEl proceso hijo terminó normalmente.\n");
+        } else {
+            printf("\nEl proceso hijo terminó de forma abrupta.\n");
+        }
+
+        printf("\nEl proceso padre ha finalizado.\n");
+    }
+    return 0;
+}
+```
 
 2. Modificar el programa para que el padre envíe una señal SIGUSR1 al hijo antes de que termine.
 ```bash
