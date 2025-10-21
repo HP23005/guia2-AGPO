@@ -60,6 +60,12 @@ int main() {
     return 0; // Fin del programa
 }
 ```
+
+```bash
+gcc ejercicio1.c -o ejercicio1
+./ejercicio1
+```
+
 ```bash
 El programa comienza creando un nuevo proceso con la llamada al sistema fork(). Esta función duplica el proceso actual, de modo que ahora existen dos procesos: el padre y el hijo. El valor que devuelve fork() permite distinguirlos: el hijo recibe 0, mientras que el padre recibe el PID del hijo.
 
