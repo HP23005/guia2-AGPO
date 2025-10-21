@@ -101,6 +101,8 @@ int main() {
             perror("\nError al ejecutar execvp\n");
             exit(EXIT_FAILURE);
         }
+
+        printf("\nEste texto no deberia mostrarse\n");
     } 
     else {
         printf("\nSoy el proceso padre (PID=%d), estoy esperando a que mi hijo termine...\n", getpid());
